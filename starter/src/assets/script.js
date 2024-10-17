@@ -97,6 +97,19 @@ function increaseQuantity(productId){
   - if the function decreases the quantity to 0, the product is removed from the cart
 */
 
+function decreaseQuantity(productId){
+
+  for( let i = 0; i < cart.length; i++){
+    if( cart[i].productId == productId){
+      cart[i].quantity -= 1;
+
+      if( cart[i].quantity == 0){
+        cart.splice(i, 1);
+      }
+      break;
+    }
+  }
+}
 
 /* Create a function named removeProductFromCart that takes in the productId as an argument
   - removeProductFromCart should get the correct product based on the productId
