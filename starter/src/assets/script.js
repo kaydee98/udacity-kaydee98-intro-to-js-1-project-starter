@@ -82,11 +82,21 @@ function addProductToCart(productId){
   - increaseQuantity should then increase the product's quantity
 */
 
+function increaseQuantity(productId){
+
+  for( let i = 0; i < cart.length; i++){
+    if( cart[i].productId == productId){
+      cart[i].quantity += 1;
+      break;
+    }
+  }
+}
 /* Create a function named decreaseQuantity that takes in the productId as an argument
   - decreaseQuantity should get the correct product based on the productId
   - decreaseQuantity should decrease the quantity of the product
   - if the function decreases the quantity to 0, the product is removed from the cart
 */
+
 
 /* Create a function named removeProductFromCart that takes in the productId as an argument
   - removeProductFromCart should get the correct product based on the productId
