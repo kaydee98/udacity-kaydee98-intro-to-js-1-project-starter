@@ -52,6 +52,10 @@ const cart = [];
   - if the product is not already in the cart, add it to the cart
 */
 
+function findCartProductIndex(productId){
+  return cart.findIndex( p => p.productId === productId);
+}
+
 function addProductToCart(productId) {
   let product, cartIndex;
 
@@ -59,7 +63,7 @@ function addProductToCart(productId) {
   product = products.find( p => p.productId === productId);
   
   // Check if the product is in the cart
-  cartIndex = cart.findIndex( p => p.productId === productId);
+  cartIndex = findCartProductIndex(productId);
 
   if( cartIndex === -1) {
     product.quantity = 1;  
@@ -79,15 +83,9 @@ function addProductToCart(productId) {
 function increaseQuantity(productId){
   let cartIndex; 
 
-  cartIndex = cart.findIndex( p => p.productId === productId);
-  cart[cartIndex].quantity += 1
-  /*
-  for( let i = 0; i < cart.length; i++){
-    if( cart[i].productId == productId){
-      cart[i].quantity += 1;
-      break;
-    }
-  } */
+  cartIndex = findCartProductIndex(productId);
+  cart[cartIndex].quantity += 1;
+
 }
 /* Create a function named decreaseQuantity that takes in the productId as an argument
   - decreaseQuantity should get the correct product based on the productId
@@ -96,17 +94,15 @@ function increaseQuantity(productId){
 */
 
 function decreaseQuantity(productId){
+  let cartIndex; 
 
-  for( let i = 0; i < cart.length; i++){
-    if( cart[i].productId == productId){
-      cart[i].quantity -= 1;
+  cartIndex = findCartProductIndex(productId);
+  cart[cartIndex].quantity -= 1;
 
-      if( cart[i].quantity == 0){
-        cart.splice(i, 1);
-      }
-      break;
-    }
+  if (cart[cartIndex].quantity == 0) {
+    cart.splice(cartIndex, 1);
   }
+
 }
 
 /* Create a function named removeProductFromCart that takes in the productId as an argument
@@ -117,16 +113,12 @@ function decreaseQuantity(productId){
 
 function removeProductFromCart(productId){
 
-  for( let i = 0; i < cart.length; i++){
-    if( cart[i].productId == productId){
-      cart[i].quantity = 0;
+  let cartIndex; 
 
-      if( cart[i].quantity == 0){
-        cart.splice(i, 1);
-      }
-      break;
-    }
-  }
+  cartIndex = findCartProductIndex(productId);
+  cart[cartIndex].quantity = 0;
+  cart.splice(cartIndex,1);
+
 }
 
 /* Create a function named cartTotal that has no parameters
