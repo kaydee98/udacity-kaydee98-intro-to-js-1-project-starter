@@ -77,13 +77,17 @@ function addProductToCart(productId) {
 */
 
 function increaseQuantity(productId){
+  let cartIndex; 
 
+  cartIndex = cart.findIndex( p => p.productId === productId);
+  cart[cartIndex].quantity += 1
+  /*
   for( let i = 0; i < cart.length; i++){
     if( cart[i].productId == productId){
       cart[i].quantity += 1;
       break;
     }
-  }
+  } */
 }
 /* Create a function named decreaseQuantity that takes in the productId as an argument
   - decreaseQuantity should get the correct product based on the productId
