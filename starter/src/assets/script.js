@@ -45,12 +45,37 @@ products[2] = product3;
 */
 
 /* Declare an empty array named cart to hold the items in the cart */
+const cart = [];
 
 /* Create a function named addProductToCart that takes in the product productId as an argument
   - addProductToCart should get the correct product based on the productId
   - addProductToCart should then increase the product's quantity
   - if the product is not already in the cart, add it to the cart
 */
+
+function addProductToCart(productId){
+  let product;
+
+  /* get product based on productID */
+
+  for( let i = 0; i < products.length; i++) {
+     if(products[[i].productId == productId]) {
+        product = product[i];
+      break;
+     }
+  }
+
+  /* add product to cart or update quantity if product exist */
+  for( let i = 0; i < cart.length; i++){
+    if( cart[i].productId == productId){
+      cart[i].quantity += 1;
+      break;
+    }
+    else{
+      cart.push(product);
+    }
+    }
+  }
 
 /* Create a function named increaseQuantity that takes in the productId as an argument
   - increaseQuantity should get the correct product based on the productId
