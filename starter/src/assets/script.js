@@ -146,11 +146,14 @@ function cartTotal(){
     totalCost += cost;
 
   }
-  //return totalCost
+  return totalCost
 
 }
 
 /* Create a function called emptyCart that empties the products from the cart */
+function emptyCart(){
+  cart.splice(1, cart.length);
+}
 
 /* Create a function named pay that takes in an amount as an argument
   - amount is the money paid by customer
