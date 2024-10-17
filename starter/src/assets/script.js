@@ -132,7 +132,7 @@ function cartTotal(){
   let totalCost = 0;
 
   for( let i = 0; i < cart.length; i++){
-    cost = cart[i].quantity * cart[i].price;
+    let cost = cart[i].quantity * cart[i].price;
     totalCost += cost;
 
   }
@@ -142,7 +142,7 @@ function cartTotal(){
 
 /* Create a function called emptyCart that empties the products from the cart */
 function emptyCart(){
-  cart.splice(1, cart.length);
+  cart.splice(0, cart.length);
 }
 
 /* Create a function named pay that takes in an amount as an argument
@@ -158,7 +158,6 @@ function pay(amount) {
   return remainingBalance;
 }
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
-
 
 /* The following is for running unit tests. 
    To fully complete this project, it is expected that all tests pass.
