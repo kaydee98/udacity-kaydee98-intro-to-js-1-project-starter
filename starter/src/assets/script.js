@@ -137,6 +137,19 @@ function removeProductFromCart(productId){
   Hint: price and quantity can be used to determine total cost
 */
 
+function cartTotal(){
+
+  let totalCost = 0;
+
+  for( let i = 0; i < cart.length; i++){
+    cost = cart[i].quantity * cart[i].price;
+    totalCost += cost;
+
+  }
+  //return totalCost
+
+}
+
 /* Create a function called emptyCart that empties the products from the cart */
 
 /* Create a function named pay that takes in an amount as an argument
