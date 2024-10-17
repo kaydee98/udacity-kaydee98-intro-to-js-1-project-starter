@@ -35,9 +35,7 @@ const product3 = {
   image: "/images/strawberry.jpg"
 };
 
-products[0] = product1;
-products[1] = product2;
-products[2] = product3;
+products.push(product1, product2, product3);
 
 /* Images provided in /images folder. All images from Unsplash.com
    - cherry.jpg by Mae Mu
@@ -55,31 +53,20 @@ const cart = [];
 */
 
 function addProductToCart(productId) {
-  let product;
+  let product, cartIndex;
 
   // Get product based on productId from the products array
-  for (let i = 0; i < products.length; i++) {
-    if (products[i].productId == productId) {
-      product = products[i]; 
-      break;
-    }
-  }
-
+  product = products.find( p => p.productId === productId);
+  
   // Check if the product is in the cart
-  let productInCart = false;
+  cartIndex = cart.findIndex( p => p.productId === productId);
 
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].productId == productId) {
-      cart[i].quantity += 1; 
-      productInCart = true;
-      break;
-    }
-  }
-
-  // If the product is not in the cart, add it with quantity 1
-  if (!productInCart) {
+  if( cartIndex === -1) {
     product.quantity = 1;  
     cart.push(product);
+  }
+  else {
+    cart[cartIndex].quantity += 1
   }
 }
 
