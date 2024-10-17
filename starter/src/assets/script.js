@@ -53,29 +53,35 @@ const cart = [];
   - if the product is not already in the cart, add it to the cart
 */
 
-function addProductToCart(productId){
+function addProductToCart(productId) {
   let product;
 
-  /* get product based on productID */
-
-  for( let i = 0; i < products.length; i++) {
-     if(products[[i].productId == productId]) {
-        product = product[i];
-      break;
-     }
-  }
-
-  /* add product to cart or update quantity if product exist */
-  for( let i = 0; i < cart.length; i++){
-    if( cart[i].productId == productId){
-      cart[i].quantity += 1;
+  // Get product based on productId from the products array
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].productId == productId) {
+      product = products[i]; 
       break;
     }
-    else{
-      cart.push(product);
-    }
+  }
+
+  // Check if the product is in the cart
+  let productInCart = false;
+
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].productId == productId) {
+      cart[i].quantity += 1; 
+      productInCart = true;
+      break;
     }
   }
+
+  // If the product is not in the cart, add it with quantity 1
+  if (!productInCart) {
+    product.quantity = 1;  // Set the quantity to 1 since it's being added to the cart
+    cart.push(product);
+  }
+}
+
 
 /* Create a function named increaseQuantity that takes in the productId as an argument
   - increaseQuantity should get the correct product based on the productId
@@ -146,7 +152,7 @@ function cartTotal(){
     totalCost += cost;
 
   }
-  return totalCost
+  return totalCost;
 
 }
 
@@ -162,6 +168,11 @@ function emptyCart(){
   Hint: cartTotal function gives us cost of all the products in the cart  
 */
 
+function pay(amount) {
+  let result = 0;
+  result = amount - cartTotal();
+  return result;
+}
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
 
