@@ -1,5 +1,6 @@
 /* Create an array named products which you will use to add all of your product object literals that you create in the next step. */
-const products = []
+const products = [];
+let remainingBalance = 0;
 
 /* Create 3 or more product objects using object literal notation 
    Each product should include five properties
@@ -77,7 +78,7 @@ function addProductToCart(productId) {
 
   // If the product is not in the cart, add it with quantity 1
   if (!productInCart) {
-    product.quantity = 1;  // Set the quantity to 1 since it's being added to the cart
+    product.quantity = 1;  
     cart.push(product);
   }
 }
@@ -169,9 +170,9 @@ function emptyCart(){
 */
 
 function pay(amount) {
-  let result = 0;
-  result = amount - cartTotal();
-  return result;
+  
+  remainingBalance = amount - cartTotal();
+  return remainingBalance;
 }
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
