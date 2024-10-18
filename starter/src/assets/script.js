@@ -81,13 +81,7 @@ function removeProductFromCart(productId) {
 
 // Calculates the total cost of all products in the cart by summing their price and quantity.
 function cartTotal() {
-  let totalCost = 0;
-
-  for (let i = 0; i < cart.length; i += 1) {
-    const cost = cart[i].quantity * cart[i].price;
-    totalCost += cost;
-  }
-
+  const totalCost = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
   return totalCost;
 }
 
