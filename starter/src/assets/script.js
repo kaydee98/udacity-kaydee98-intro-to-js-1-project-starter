@@ -1,6 +1,7 @@
 /* Create an array named products which you will use to add all of your product object literals that you create in the next step. */
 const products = [];
 let remainingBalance = 0;
+let totalPaid = 0;
 
 /* Create 3 or more product objects using object literal notation 
    Each product should include five properties
@@ -136,6 +137,7 @@ function cartTotal(){
     totalCost += cost;
 
   }
+
   return totalCost;
 
 }
@@ -143,6 +145,7 @@ function cartTotal(){
 /* Create a function called emptyCart that empties the products from the cart */
 function emptyCart(){
   cart.splice(0, cart.length);
+  totalPaid = 0;
 }
 
 /* Create a function named pay that takes in an amount as an argument
@@ -153,9 +156,16 @@ function emptyCart(){
 */
 
 function pay(amount) {
+  totalPaid += amount;
   
-  remainingBalance = amount - cartTotal();
-  return remainingBalance;
+  let diff = totalPaid - cartTotal();
+  remainingBalance = cartTotal() - totalPaid;
+
+  if (diff >= 0) {
+    totalPaid = 0;
+  }
+
+  return diff;
 }
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
