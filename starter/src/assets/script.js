@@ -97,7 +97,7 @@ function pay(amount) {
   totalPaid += amount;
   remainingBalance = totalPaid - cartTotal();
 
-  // empty cart to reset total money cover cart total
+  // empty cart to reset total paid if total covers cart total
   if (remainingBalance >= 0) {
     emptyCart();
   }
