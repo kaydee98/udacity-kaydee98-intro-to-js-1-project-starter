@@ -8,7 +8,7 @@ const product1 = {
   price: 3.99,
   quantity: 0,
   productId: 101,
-  image: '/images/cherry.jpg',
+  image: './images/cherry.jpg',
 };
 
 const product2 = {
@@ -16,7 +16,7 @@ const product2 = {
   price: 2.50,
   quantity: 0,
   productId: 102,
-  image: '/images/orange.jpg',
+  image: './images/orange.jpg',
 };
 
 const product3 = {
@@ -24,7 +24,7 @@ const product3 = {
   price: 4.99,
   quantity: 0,
   productId: 103,
-  image: '/images/strawberry.jpg',
+  image: './images/strawberry.jpg',
 };
 
 products.push(product1, product2, product3);
