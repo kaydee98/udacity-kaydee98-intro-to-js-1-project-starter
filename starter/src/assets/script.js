@@ -5,7 +5,7 @@ let totalPaid = 0;
 // Define product objects and add them to the products array
 const product1 = {
   name: 'Cherry',
-  price: 3.99,
+  price: 4.5,
   quantity: 0,
   productId: 101,
   image: './images/cherry.jpg',
@@ -21,7 +21,7 @@ const product2 = {
 
 const product3 = {
   name: 'Strawberry',
-  price: 4.99,
+  price: 5.0,
   quantity: 0,
   productId: 103,
   image: './images/strawberry.jpg',
@@ -95,16 +95,14 @@ function emptyCart() {
 // Returns the remaining balance. Positive if overpaid, negative if underpaid
 function pay(amount) {
   totalPaid += amount;
+  remainingBalance = totalPaid - cartTotal();
 
-  const diff = totalPaid - cartTotal();
-  remainingBalance = cartTotal() - totalPaid;
-
-  // reset totalPaid if enough to cover cart total
-  if (diff >= 0) {
-    totalPaid = 0;
+  // empty cart to reset total money cover cart total
+  if (remainingBalance >= 0) {
+    emptyCart();
   }
 
-  return diff;
+  return remainingBalance;
 }
 
 module.exports = {
