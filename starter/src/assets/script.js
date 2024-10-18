@@ -1,17 +1,8 @@
-/* Create an array named products which you will use to add all of your product object literals that you create in the next step. */
-const products = [];
+const products = []; // Array to store all product objects
 let remainingBalance = 0;
 let totalPaid = 0;
 
-/* Create 3 or more product objects using object literal notation 
-   Each product should include five properties
-   - name: name of product (string)
-   - price: price of product (number)
-   - quantity: quantity in cart should start at zero (number)
-   - productId: unique id for the product (number)
-   - image: picture of product (url string)
-*/
-
+// Define product objects and add them to the products array
 const product1 = {
   name: "Cherry",
   price: 3.99,
@@ -38,25 +29,15 @@ const product3 = {
 
 products.push(product1, product2, product3);
 
-/* Images provided in /images folder. All images from Unsplash.com
-   - cherry.jpg by Mae Mu
-   - orange.jpg by Mae Mu
-   - strawberry.jpg by Allec Gomes
-*/
-
-/* Declare an empty array named cart to hold the items in the cart */
+// Array to hold products that are added to the cart
 const cart = [];
 
-/* Create a function named addProductToCart that takes in the product productId as an argument
-  - addProductToCart should get the correct product based on the productId
-  - addProductToCart should then increase the product's quantity
-  - if the product is not already in the cart, add it to the cart
-*/
-
+// Helper function to find the index of a product in the cart by productId
 function findCartProductIndex(productId){
   return cart.findIndex( p => p.productId === productId);
 }
 
+// Adds a product to the cart by productId. Increases quantity if the product is already in the cart.
 function addProductToCart(productId) {
   let product, cartIndex;
 
@@ -75,12 +56,7 @@ function addProductToCart(productId) {
   }
 }
 
-
-/* Create a function named increaseQuantity that takes in the productId as an argument
-  - increaseQuantity should get the correct product based on the productId
-  - increaseQuantity should then increase the product's quantity
-*/
-
+// Increases the quantity of a product in the cart by productId
 function increaseQuantity(productId){
   let cartIndex; 
 
@@ -88,30 +64,23 @@ function increaseQuantity(productId){
   cart[cartIndex].quantity += 1;
 
 }
-/* Create a function named decreaseQuantity that takes in the productId as an argument
-  - decreaseQuantity should get the correct product based on the productId
-  - decreaseQuantity should decrease the quantity of the product
-  - if the function decreases the quantity to 0, the product is removed from the cart
-*/
 
+// Decreases the quantity of a product in the cart by productId.
+// Removes the product if quantity reaches 0.
 function decreaseQuantity(productId){
   let cartIndex; 
 
   cartIndex = findCartProductIndex(productId);
   cart[cartIndex].quantity -= 1;
 
+  // If the quantity is reduced to 0, remove the product from the cart
   if (cart[cartIndex].quantity == 0) {
     cart.splice(cartIndex, 1);
   }
 
 }
 
-/* Create a function named removeProductFromCart that takes in the productId as an argument
-  - removeProductFromCart should get the correct product based on the productId
-  - removeProductFromCart should update the product quantity to 0
-  - removeProductFromCart should remove the product from the cart
-*/
-
+// Removes a product from the cart entirely by productId and sets its quantity to 0.
 function removeProductFromCart(productId){
 
   let cartIndex; 
@@ -122,12 +91,7 @@ function removeProductFromCart(productId){
 
 }
 
-/* Create a function named cartTotal that has no parameters
-  - cartTotal should iterate through the cart to get the total cost of all products
-  - cartTotal should return the total cost of the products in the cart
-  Hint: price and quantity can be used to determine total cost
-*/
-
+//Calculates the total cost of all products in the cart by summing their price and quantity.
 function cartTotal(){
 
   let totalCost = 0;
@@ -142,38 +106,27 @@ function cartTotal(){
 
 }
 
-/* Create a function called emptyCart that empties the products from the cart */
+/* Empties the products from the cart */
 function emptyCart(){
   cart.splice(0, cart.length);
   totalPaid = 0;
 }
 
-/* Create a function named pay that takes in an amount as an argument
-  - amount is the money paid by customer
-  - pay will return a negative number if there is a remaining balance
-  - pay will return a positive number if money should be returned to customer
-  Hint: cartTotal function gives us cost of all the products in the cart  
-*/
-
+// Processes payment by subtracting the amount paid from the cart total. 
+// Returns the remaining balance. Positive if overpaid, negative if underpaid
 function pay(amount) {
   totalPaid += amount;
   
-  let diff = totalPaid - cartTotal();
+  let diff = totalPaid - cartTotal(); 
   remainingBalance = cartTotal() - totalPaid;
 
+  //reset totalPaid if enough to cover cart total
   if (diff >= 0) {
     totalPaid = 0;
   }
 
   return diff;
 }
-/* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
-
-/* The following is for running unit tests. 
-   To fully complete this project, it is expected that all tests pass.
-   Run the following command in terminal to run tests
-   npm run test
-*/
 
 module.exports = {
    products,
